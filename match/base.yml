@@ -1,0 +1,92 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Right
+  - trigger: ";right"
+    replace: "→"
+
+  # Left
+  - trigger: ";left"
+    replace: "←"
+
+  # Up
+  - trigger: ";up"
+    replace: "↑"
+
+  # Down
+  - trigger: ";down"
+    replace: "↓"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current without year
+  - trigger: ";date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%b.%e"
+
+  # Print the current date with year
+  - trigger: ";ddate"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%b. %e, %Y"
+
+  # Print the current date with time
+  - trigger: ";time"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%b. %e, %Y %H:%M"
+
+  # Print the current date in a machine-readable-fashion
+  - trigger: ";stamp"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # math symbols
+  - trigger: ";implies"
+    replace: "⟹"
+  - trigger: ";cdot"
+    replace: "⋅"
+  - trigger: ";partial"
+    replace: "∂"
+  - trigger: ";approx"
+    replace: "≈"
+
+
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
